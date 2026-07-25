@@ -1,6 +1,18 @@
+import heroPhoto from '@/assets/images/vanderlei-hero.webp'
+import GithubIcon from '@/components/icons/GithubIcon'
+import LinkedinIcon from '@/components/icons/LinkedinIcon'
 import { motion } from 'framer-motion'
 import { ArrowRight, Mail } from 'lucide-react'
-import heroPhoto from '@/assets/images/vanderlei-hero.webp'
+
+const socialLinks = [
+  { href: 'https://github.com/', label: 'GitHub', icon: GithubIcon },
+  {
+    href: 'www.linkedin.com/in/vanderleifernandesds',
+    label: 'LinkedIn',
+    icon: LinkedinIcon,
+  },
+  { href: 'mailto:vanderleifds.9000@gmail.com', label: 'E-mail', icon: Mail },
+]
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -30,14 +42,14 @@ function Hero() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)] mask-[radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)] bg-size-[64px_64px]" />
       </div>
 
-      <div className="relative mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-16 px-6 md:grid-cols-2 md:gap-24">
+      <div className="relative mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-16 rounded-xl px-6 md:grid-cols-2 md:gap-24">
         <div className="order-2 text-center md:order-1 md:text-left">
           <motion.span
             custom={0}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70"
+            className="inline-block rounded-xl border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70"
           >
             Disponível para novos projetos
           </motion.span>
@@ -74,7 +86,7 @@ function Hero() {
             <a
               href="#projects"
               onClick={handleScrollTo('projects')}
-              className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-900 transition-transform hover:scale-105"
+              className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold tracking-wide text-white text-white/70 uppercase transition-colors hover:bg-blue-700 hover:bg-white/10 hover:text-white"
             >
               Ver projetos
               <ArrowRight size={16} />
@@ -82,11 +94,35 @@ function Hero() {
             <a
               href="#contact"
               onClick={handleScrollTo('contact')}
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-xl border-2 border-blue-800 bg-white px-6 py-3 text-sm font-bold tracking-wide text-blue-800 uppercase transition-colors hover:bg-blue-50"
             >
-              Fale comigo
+              Entrar em contato
               <Mail size={16} />
             </a>
+          </motion.div>
+
+          <motion.div
+            custom={0.4}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="mt-6 flex items-center justify-center gap-3 md:justify-start"
+          >
+            {socialLinks.map((social) => {
+              const Icon = social.icon
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.label}
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-neutral-900 shadow-sm transition-transform hover:scale-105"
+                >
+                  <Icon size={18} />
+                </a>
+              )
+            })}
           </motion.div>
         </div>
 
@@ -101,7 +137,7 @@ function Hero() {
             <img
               src={heroPhoto}
               alt="Vanderlei Fernandes"
-              className="h-72 w-72 rounded-full border border-white/10 object-cover shadow-2xl shadow-black/40 sm:h-96 sm:w-96 md:h-104 md:w-104"
+              className="h-72 w-72 rounded-3xl border-white/10 object-cover shadow-2xl shadow-black/40 sm:h-96 sm:w-96 md:h-104 md:w-104"
             />
           </div>
         </motion.div>
