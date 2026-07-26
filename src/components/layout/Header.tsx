@@ -81,7 +81,7 @@ function Header() {
           <a
             href="/curriculo-vanderlei-fernandes.pdf"
             download
-            className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2 text-xs font-semibold tracking-wide text-neutral-900 uppercase transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-e-2xl bg-white px-5 py-2 text-xs font-semibold tracking-wide text-neutral-900 uppercase transition-opacity hover:opacity-90"
           >
             Currículo
             <Download size={14} />

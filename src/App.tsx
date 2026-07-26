@@ -1,5 +1,7 @@
 import { Header, Main, Footer } from '@/components/layout'
+import About from '@/sections/About'
 import Hero from '@/sections/Hero'
+import Skills from '@/sections/Skills'
 
 function App() {
   return (
@@ -7,6 +9,8 @@ function App() {
       <Header />
       <Main>
         <Hero />
+        <About />
+        <Skills />
       </Main>
       <Footer />
     </div>

@@ -1,8 +1,10 @@
 import heroPhoto from '@/assets/images/vanderlei-hero.webp'
 import GithubIcon from '@/components/icons/GithubIcon'
 import LinkedinIcon from '@/components/icons/LinkedinIcon'
+import LogoLoop, { type LogoItem } from '@/components/ui/LogoLoop'
 import { motion } from 'framer-motion'
 import { ArrowRight, Mail } from 'lucide-react'
+import { SiFramer, SiReact, SiTailwindcss, SiTypescript } from 'react-icons/si'
 
 const socialLinks = [
   { href: 'https://github.com/', label: 'GitHub', icon: GithubIcon },
@@ -12,6 +14,13 @@ const socialLinks = [
     icon: LinkedinIcon,
   },
   { href: 'mailto:vanderleifds.9000@gmail.com', label: 'E-mail', icon: Mail },
+]
+
+const techLogos: LogoItem[] = [
+  { node: <SiReact />, title: 'React', href: 'https://react.dev' },
+  { node: <SiTypescript />, title: 'TypeScript', href: 'https://www.typescriptlang.org' },
+  { node: <SiTailwindcss />, title: 'Tailwind CSS', href: 'https://tailwindcss.com' },
+  { node: <SiFramer />, title: 'Framer Motion', href: 'https://www.framer.com/motion' },
 ]
 
 const fadeUp = {
@@ -94,7 +103,7 @@ function Hero() {
             <a
               href="#contact"
               onClick={handleScrollTo('contact')}
-              className="inline-flex items-center gap-2 rounded-xl border-2 border-blue-800 bg-white px-6 py-3 text-sm font-bold tracking-wide text-blue-800 uppercase transition-colors hover:bg-blue-50"
+              className="inline-flex items-center gap-2 rounded-xl border-2 border-blue-80 bg-white px-6 py-3 text-sm font-bold tracking-wide text-blue-800 uppercase transition-colors hover:bg-blue-50"
             >
               Entrar em contato
               <Mail size={16} />
@@ -124,6 +133,25 @@ function Hero() {
               )
             })}
           </motion.div>
+
+          <motion.div
+            custom={0.5}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="mt-8 max-w-md overflow-hidden text-neutral-500"
+          >
+            <LogoLoop
+              logos={techLogos}
+              speed={60}
+              gap={40}
+              logoHeight={28}
+              fadeOut
+              fadeOutColor="#0a0a0a"
+              hoverSpeed={0}
+              ariaLabel="Tecnologias utilizadas"
+            />
+          </motion.div>
         </div>
 
         <motion.div
@@ -137,7 +165,7 @@ function Hero() {
             <img
               src={heroPhoto}
               alt="Vanderlei Fernandes"
-              className="h-72 w-72 rounded-3xl border-white/10 object-cover shadow-2xl shadow-black/40 sm:h-96 sm:w-96 md:h-104 md:w-104"
+              className="h-72 w-72 rounded-2xl border-white/50 object-cover shadow-2xl shadow-black/40 sm:h-96 sm:w-96 md:h-104 md:w-104"
             />
           </div>
         </motion.div>
