@@ -25,7 +25,7 @@ function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-neutral-950 py-24"
+      className="relative overflow-hidden bg-white py-24 dark:bg-neutral-950"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-0 -right-40 h-96 w-96 rounded-full bg-teal-700/10 blur-3xl" />
@@ -49,7 +49,7 @@ function About() {
               height={320}
               loading="lazy"
               decoding="async"
-              className="h-72 w-72 rounded-3xl border-white/50 object-cover shadow-2xl shadow-black/40 sm:h-80 sm:w-80"
+              className="h-72 w-72 rounded-3xl border-neutral-200 object-cover shadow-2xl shadow-black/10 sm:h-80 sm:w-80 dark:border-white/50 dark:shadow-black/40"
             />
           </div>
         </motion.div>
@@ -61,7 +61,7 @@ function About() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.4 }}
             variants={fadeUp}
-            className="inline-block rounded-xl border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70"
+            className="inline-block rounded-xl border border-neutral-200 bg-neutral-900/5 px-4 py-1.5 text-sm text-neutral-600 dark:border-white/10 dark:bg-white/5 dark:text-white/70"
           >
             Sobre mim
           </motion.span>
@@ -72,7 +72,7 @@ function About() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.4 }}
             variants={fadeUp}
-            className="mt-6 text-4xl font-semibold tracking-tight text-white md:text-5xl"
+            className="mt-6 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl dark:text-white"
           >
             Transformo ideias em experiências digitais
           </motion.h2>
@@ -83,7 +83,7 @@ function About() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.4 }}
             variants={fadeUp}
-            className="mt-5 text-lg leading-relaxed text-white/60"
+            className="mt-5 text-lg leading-relaxed text-neutral-600 dark:text-white/60"
           >
             Sou desenvolvedor Front-End com foco em criar produtos que unem boa engenharia
             e boa experiência de uso. Gosto de transformar interfaces complexas em soluções
@@ -104,11 +104,11 @@ function About() {
               return (
                 <div
                   key={item.title}
-                  className="rounded-xl border border-white/10 bg-white/5 p-4 text-center sm:text-left"
+                  className="rounded-xl border border-neutral-200 bg-neutral-900/5 p-4 text-center sm:text-left dark:border-white/10 dark:bg-white/5"
                 >
-                  <Icon size={20} className="mx-auto text-teal-500 sm:mx-0" />
-                  <p className="mt-3 text-sm font-semibold text-white">{item.title}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-white/50">
+                  <Icon size={20} className="mx-auto text-teal-500 sm:mx-0" aria-hidden="true" />
+                  <p className="mt-3 text-sm font-semibold text-neutral-900 dark:text-white">{item.title}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-neutral-500 dark:text-white/50">
                     {item.description}
                   </p>
                 </div>

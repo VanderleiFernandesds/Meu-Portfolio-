@@ -53,7 +53,7 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-neutral-950 py-24">
+    <section id="contact" className="relative overflow-hidden bg-white py-24 dark:bg-neutral-950">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-1/4 -left-40 h-96 w-96 rounded-full bg-teal-700/10 blur-3xl" />
         <div className="absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-teal-700/15 blur-3xl" />
@@ -67,27 +67,27 @@ function Contact() {
           viewport={{ once: true, amount: 0.4 }}
           variants={fadeUp}
         >
-          <span className="inline-block rounded-xl border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70">
+          <span className="inline-block rounded-xl border border-neutral-200 bg-neutral-900/5 px-4 py-1.5 text-sm text-neutral-600 dark:border-white/10 dark:bg-white/5 dark:text-white/70">
             Contato
           </span>
-          <h2 className="mt-6 text-4xl font-semibold tracking-tight text-white md:text-5xl">
+          <h2 className="mt-6 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl dark:text-white">
             Vamos construir algo juntos?
           </h2>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/60">
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-neutral-600 dark:text-white/60">
             Envie uma mensagem com sua ideia, projeto ou oportunidade. Respondo assim
             que possível.
           </p>
 
-          <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20 backdrop-blur-sm">
+          <div className="mt-10 rounded-2xl border border-neutral-200 bg-neutral-900/5 p-6 shadow-lg shadow-black/5 backdrop-blur-sm dark:border-white/10 dark:bg-white/5 dark:shadow-black/20">
             <div className="flex items-center gap-3">
-              <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-700/15 text-teal-500">
+              <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-700/15 text-teal-600 dark:text-teal-500">
                 <Mail size={20} />
               </span>
               <div>
-                <p className="text-sm font-semibold text-white">E-mail</p>
+                <p className="text-sm font-semibold text-neutral-900 dark:text-white">E-mail</p>
                 <a
                   href="mailto:vanderleifds.9000@gmail.com"
-                  className="rounded-md text-sm text-white/60 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+                  className="rounded-md text-sm text-neutral-600 transition-colors hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:text-white/60 dark:hover:text-white"
                 >
                   vanderleifds.9000@gmail.com
                 </a>
@@ -104,11 +104,11 @@ function Contact() {
           variants={fadeUp}
           onSubmit={handleSubmit(onSubmit)}
           noValidate
-          className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20 backdrop-blur-sm md:p-8"
+          className="rounded-2xl border border-neutral-200 bg-neutral-900/5 p-6 shadow-lg shadow-black/5 backdrop-blur-sm md:p-8 dark:border-white/10 dark:bg-white/5 dark:shadow-black/20"
         >
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <label className="block">
-              <span className="mb-2 flex items-center gap-2 text-sm font-medium text-white">
+              <span className="mb-2 flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-white">
                 <User size={16} aria-hidden="true" />
                 Nome
               </span>
@@ -118,18 +118,18 @@ function Contact() {
                 {...register('name')}
                 aria-invalid={!!errors.name}
                 aria-describedby={errors.name ? 'name-error' : undefined}
-                className="h-12 w-full rounded-xl border border-white/10 bg-neutral-950/60 px-4 text-sm text-white outline-none transition-colors placeholder:text-white/30 focus:border-teal-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+                className="h-12 w-full rounded-xl border border-neutral-200 bg-white px-4 text-sm text-neutral-900 outline-none transition-colors placeholder:text-neutral-400 focus:border-teal-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:border-white/10 dark:bg-neutral-950/60 dark:text-white dark:placeholder:text-white/30"
                 placeholder="Seu nome"
               />
               {errors.name && (
-                <span id="name-error" role="alert" className="mt-2 block text-xs text-red-300">
+                <span id="name-error" role="alert" className="mt-2 block text-xs text-red-600 dark:text-red-300">
                   {errors.name.message}
                 </span>
               )}
             </label>
 
             <label className="block">
-              <span className="mb-2 flex items-center gap-2 text-sm font-medium text-white">
+              <span className="mb-2 flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-white">
                 <Mail size={16} aria-hidden="true" />
                 E-mail
               </span>
@@ -139,11 +139,11 @@ function Contact() {
                 {...register('email')}
                 aria-invalid={!!errors.email}
                 aria-describedby={errors.email ? 'email-error' : undefined}
-                className="h-12 w-full rounded-xl border border-white/10 bg-neutral-950/60 px-4 text-sm text-white outline-none transition-colors placeholder:text-white/30 focus:border-teal-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+                className="h-12 w-full rounded-xl border border-neutral-200 bg-white px-4 text-sm text-neutral-900 outline-none transition-colors placeholder:text-neutral-400 focus:border-teal-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:border-white/10 dark:bg-neutral-950/60 dark:text-white dark:placeholder:text-white/30"
                 placeholder="voce@email.com"
               />
               {errors.email && (
-                <span id="email-error" role="alert" className="mt-2 block text-xs text-red-300">
+                <span id="email-error" role="alert" className="mt-2 block text-xs text-red-600 dark:text-red-300">
                   {errors.email.message}
                 </span>
               )}
@@ -151,7 +151,7 @@ function Contact() {
           </div>
 
           <label className="mt-5 block">
-            <span className="mb-2 flex items-center gap-2 text-sm font-medium text-white">
+            <span className="mb-2 flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-white">
               <MessageSquare size={16} aria-hidden="true" />
               Mensagem
             </span>
@@ -159,11 +159,11 @@ function Contact() {
               {...register('message')}
               aria-invalid={!!errors.message}
               aria-describedby={errors.message ? 'message-error' : undefined}
-              className="min-h-40 w-full resize-none rounded-xl border border-white/10 bg-neutral-950/60 px-4 py-3 text-sm leading-relaxed text-white outline-none transition-colors placeholder:text-white/30 focus:border-teal-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+              className="min-h-40 w-full resize-none rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm leading-relaxed text-neutral-900 outline-none transition-colors placeholder:text-neutral-400 focus:border-teal-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:border-white/10 dark:bg-neutral-950/60 dark:text-white dark:placeholder:text-white/30"
               placeholder="Conte um pouco sobre o projeto..."
             />
             {errors.message && (
-              <span id="message-error" role="alert" className="mt-2 block text-xs text-red-300">
+              <span id="message-error" role="alert" className="mt-2 block text-xs text-red-600 dark:text-red-300">
                 {errors.message.message}
               </span>
             )}
@@ -172,14 +172,14 @@ function Contact() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-neutral-900 transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 sm:w-auto"
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 sm:w-auto dark:bg-white dark:text-neutral-900"
           >
             Enviar mensagem
             <Send size={16} aria-hidden="true" />
           </button>
 
           {isSent && (
-            <p role="status" aria-live="polite" className="mt-4 text-sm text-teal-300">
+            <p role="status" aria-live="polite" className="mt-4 text-sm text-teal-600 dark:text-teal-300">
               Mensagem validada. Seu aplicativo de e-mail foi aberto para o envio.
             </p>
           )}

@@ -74,7 +74,7 @@ const skillCategories: SkillCategory[] = [
 
 function Skills() {
   return (
-    <section id="skills" className="relative overflow-hidden bg-neutral-950 py-24">
+    <section id="skills" className="relative overflow-hidden bg-white py-24 dark:bg-neutral-950">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-1/3 -left-40 h-96 w-96 rounded-full bg-teal-700/10 blur-3xl" />
         <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-teal-700/15 blur-3xl" />
@@ -89,13 +89,13 @@ function Skills() {
           variants={fadeUp}
           className="text-center"
         >
-          <span className="inline-block rounded-xl border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70">
+          <span className="inline-block rounded-xl border border-neutral-200 bg-neutral-900/5 px-4 py-1.5 text-sm text-neutral-600 dark:border-white/10 dark:bg-white/5 dark:text-white/70">
             Habilidades
           </span>
-          <h2 className="mt-6 text-4xl font-semibold tracking-tight text-white md:text-5xl">
+          <h2 className="mt-6 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl dark:text-white">
             Tecnologias com as quais trabalho
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/60">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-white/60">
             Um panorama das ferramentas e linguagens que utilizo no dia a dia para
             construir produtos completos, do front-end ao banco de dados.
           </p>
@@ -112,16 +112,16 @@ function Skills() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 variants={fadeUp}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20 backdrop-blur-sm"
+                className="rounded-2xl border border-neutral-200 bg-neutral-900/5 p-6 shadow-lg shadow-black/5 backdrop-blur-sm dark:border-white/10 dark:bg-white/5 dark:shadow-black/20"
               >
                 <div className="flex items-center gap-3">
                   <span
                     aria-hidden="true"
-                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-700/15 text-teal-500"
+                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-700/15 text-teal-600 dark:text-teal-500"
                   >
                     <CategoryIcon size={20} />
                   </span>
-                  <h3 className="text-xl font-semibold text-white">{category.title}</h3>
+                  <h3 className="text-xl font-semibold text-neutral-900 dark:text-white">{category.title}</h3>
                 </div>
 
                 <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -130,10 +130,10 @@ function Skills() {
                     return (
                       <div
                         key={skill.name}
-                        className="flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-4 text-center transition-colors hover:border-teal-700/40 hover:bg-white/10"
+                        className="flex flex-col items-center gap-2 rounded-xl border border-neutral-200 bg-neutral-900/5 px-3 py-4 text-center text-neutral-700 transition-colors hover:border-teal-700/40 hover:bg-neutral-900/10 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
                       >
                         <Icon size={24} aria-hidden="true" />
-                        <span className="text-xs font-medium text-white/70">
+                        <span className="text-xs font-medium text-neutral-600 dark:text-white/70">
                           {skill.name}
                         </span>
                       </div>

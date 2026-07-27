@@ -1,4 +1,4 @@
-import { useState, type ComponentType } from 'react'
+import { useEffect, useState, type ComponentType } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Briefcase, Download, Mail, Menu, Moon, Sun, User, X, Zap } from 'lucide-react'
 import { navLinks } from '@/lib/navigation'
@@ -18,6 +18,11 @@ function Header() {
   const activeId = useActiveSection(navLinks.map((link) => link.id))
   const menuLinks = navLinks.filter((link) => link.id !== 'home')
 
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDark)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   function handleNavClick(id: string) {
     return (event: React.MouseEvent<HTMLAnchorElement>) => {
       handleScrollTo(id)(event)
@@ -35,11 +40,11 @@ function Header() {
 
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 rounded-xl border border-white/10 bg-neutral-900/70 px-4 shadow-lg shadow-black/20 backdrop-blur-xl md:px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 rounded-xl border border-neutral-200 bg-white/70 px-4 shadow-lg shadow-black/5 backdrop-blur-xl md:px-6 dark:border-white/10 dark:bg-neutral-900/70 dark:shadow-black/20">
         <a
           href="#home"
           onClick={handleNavClick('home')}
-          className="shrink-0 rounded-md text-lg font-bold tracking-tight text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+          className="shrink-0 rounded-md text-lg font-bold tracking-tight text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:text-white"
         >
           VF.
         </a>
@@ -56,8 +61,8 @@ function Header() {
                     aria-current={activeId === link.id ? 'true' : undefined}
                     className={`flex items-center gap-1.5 rounded-md text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 ${
                       activeId === link.id
-                        ? 'font-medium text-white'
-                        : 'text-white/60 hover:text-white'
+                        ? 'font-medium text-neutral-900 dark:text-white'
+                        : 'text-neutral-500 hover:text-neutral-900 dark:text-white/60 dark:hover:text-white'
                     }`}
                   >
                     {Icon && <Icon size={15} aria-hidden="true" />}
@@ -73,7 +78,7 @@ function Header() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-neutral-500 transition-colors hover:bg-neutral-900/5 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
             aria-label={isDark ? 'Ativar tema claro' : 'Ativar tema escuro'}
             aria-pressed={isDark}
           >
@@ -82,7 +87,7 @@ function Header() {
           <a
             href="/curriculo-vanderlei-fernandes.pdf"
             download
-            className="inline-flex items-center gap-2 rounded-e-2xl bg-white px-5 py-2 text-xs font-semibold tracking-wide text-neutral-900 uppercase transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+            className="inline-flex items-center gap-2 rounded-e-2xl bg-neutral-900 px-5 py-2 text-xs font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:bg-white dark:text-neutral-900"
           >
             Currículo
             <Download size={14} aria-hidden="true" />
@@ -92,7 +97,7 @@ function Header() {
         <button
           type="button"
           onClick={() => setIsMenuOpen((open) => !open)}
-          className="rounded-md text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 md:hidden"
+          className="rounded-md text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 md:hidden dark:text-white"
           aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
@@ -110,7 +115,7 @@ function Header() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
-            className="mx-auto mt-2 max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/90 shadow-lg shadow-black/20 backdrop-blur-xl md:hidden"
+            className="mx-auto mt-2 max-w-6xl overflow-hidden rounded-3xl border border-neutral-200 bg-white/95 shadow-lg shadow-black/5 backdrop-blur-xl md:hidden dark:border-white/10 dark:bg-neutral-900/90 dark:shadow-black/20"
           >
             <ul className="flex flex-col gap-1 px-6 py-4">
               {menuLinks.map((link) => {
@@ -123,8 +128,8 @@ function Header() {
                       aria-current={activeId === link.id ? 'true' : undefined}
                       className={`flex items-center gap-2 rounded-md py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 ${
                         activeId === link.id
-                          ? 'font-medium text-white'
-                          : 'text-white/60 hover:text-white'
+                          ? 'font-medium text-neutral-900 dark:text-white'
+                          : 'text-neutral-500 hover:text-neutral-900 dark:text-white/60 dark:hover:text-white'
                       }`}
                     >
                       {Icon && <Icon size={16} aria-hidden="true" />}
@@ -133,11 +138,11 @@ function Header() {
                   </li>
                 )
               })}
-              <li className="mt-2 flex items-center gap-3 border-t border-white/10 pt-4">
+              <li className="mt-2 flex items-center gap-3 border-t border-neutral-200 pt-4 dark:border-white/10">
                 <button
                   type="button"
                   onClick={toggleTheme}
-                  className="flex h-9 w-9 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-neutral-500 transition-colors hover:bg-neutral-900/5 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
                   aria-label={isDark ? 'Ativar tema claro' : 'Ativar tema escuro'}
                   aria-pressed={isDark}
                 >
@@ -146,7 +151,7 @@ function Header() {
                 <a
                   href="/curriculo-vanderlei-fernandes.pdf"
                   download
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-xs font-semibold tracking-wide text-neutral-900 uppercase transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+                  className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2 text-xs font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:bg-white dark:text-neutral-900"
                 >
                   Currículo
                   <Download size={14} aria-hidden="true" />

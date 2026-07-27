@@ -29,12 +29,12 @@ function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden bg-neutral-950"
+      className="relative flex min-h-screen items-center overflow-hidden bg-white dark:bg-neutral-950"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-1/4 -left-40 h-96 w-96 rounded-full bg-teal-700/15 blur-3xl" />
         <div className="absolute -right-40 bottom-0 h-112 w-md rounded-full bg-teal-700/10 blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)] mask-[radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)] bg-size-[64px_64px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] mask-[radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)] bg-size-[64px_64px] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)]" />
       </div>
 
       <div className="relative mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-16 rounded-xl px-6 md:grid-cols-2 md:gap-24">
@@ -44,7 +44,7 @@ function Hero() {
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="inline-block rounded-xl border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70"
+            className="inline-block rounded-xl border border-neutral-200 bg-neutral-900/5 px-4 py-1.5 text-sm text-neutral-600 dark:border-white/10 dark:bg-white/5 dark:text-white/70"
           >
             Disponível para novos projetos
           </motion.span>
@@ -54,7 +54,7 @@ function Hero() {
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="mt-6 text-6xl font-semibold tracking-tight text-white md:text-7xl lg:text-8xl"
+            className="mt-6 text-6xl font-semibold tracking-tight text-neutral-900 md:text-7xl lg:text-8xl dark:text-white"
           >
             Olá, eu sou Vanderlei Fernandes
           </motion.h1>
@@ -64,7 +64,7 @@ function Hero() {
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="mt-5 text-lg leading-relaxed text-white/60 md:text-xl"
+            className="mt-5 text-lg leading-relaxed text-neutral-600 md:text-xl dark:text-white/60"
           >
             Desenvolvedor Front-End especializado em criar interfaces modernas,
             responsivas e performáticas com React, TypeScript e animações que dão vida à
@@ -81,7 +81,7 @@ function Hero() {
             <a
               href="#projects"
               onClick={handleScrollTo('projects')}
-              className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold tracking-wide text-white/70 uppercase transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+              className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold tracking-wide text-neutral-600 uppercase transition-colors hover:bg-neutral-900/5 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
             >
               Ver projetos
               <ArrowRight size={16} />
@@ -112,7 +112,7 @@ function Hero() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label={social.label}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-neutral-900 shadow-sm transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-sm transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:bg-white dark:text-neutral-900"
                 >
                   <Icon size={18} />
                 </a>
@@ -133,7 +133,6 @@ function Hero() {
               gap={40}
               logoHeight={28}
               fadeOut
-              fadeOutColor="#0a0a0a"
               hoverSpeed={0}
               ariaLabel="Tecnologias utilizadas"
             />
@@ -155,7 +154,7 @@ function Hero() {
               height={416}
               fetchPriority="high"
               decoding="async"
-              className="h-72 w-72 rounded-2xl border-white/50 object-cover shadow-2xl shadow-black/40 sm:h-96 sm:w-96 md:h-104 md:w-104"
+              className="h-72 w-72 rounded-2xl border-neutral-200 object-cover shadow-2xl shadow-black/10 sm:h-96 sm:w-96 md:h-104 md:w-104 dark:border-white/50 dark:shadow-black/40"
             />
           </div>
         </motion.div>
