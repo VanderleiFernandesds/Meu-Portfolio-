@@ -329,10 +329,10 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
   return (
     <div
       onClick={onClose}
+      className="bg-black/50 dark:bg-[rgba(6,5,10,0.78)]"
       style={{
         position: 'fixed',
         inset: 0,
-        background: 'rgba(6,5,10,0.78)',
         backdropFilter: 'blur(6px)',
         WebkitBackdropFilter: 'blur(6px)',
         display: 'flex',
@@ -345,13 +345,13 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
     >
       <div
         onClick={(e) => e.stopPropagation()}
+        className="bg-white dark:bg-[linear-gradient(165deg,rgba(28,18,10,0.96),rgba(10,10,18,0.98))]"
         style={{
           position: 'relative',
           width: '100%',
           maxWidth: 880,
           maxHeight: '86vh',
           overflowY: 'auto',
-          background: 'linear-gradient(165deg, rgba(28,18,10,0.96), rgba(10,10,18,0.98))',
           border: `1px solid ${hexToRgba(ORANGE, 0.25)}`,
           borderRadius: 28,
           padding: 32,
@@ -365,6 +365,7 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
         <button
           onClick={onClose}
           aria-label="Fechar"
+          className="border-neutral-200 bg-neutral-900/5 text-neutral-900 dark:border-white/14 dark:bg-white/6 dark:text-[#f5f1ff]"
           style={{
             position: 'absolute',
             top: 20,
@@ -372,8 +373,8 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
             width: 34,
             height: 34,
             borderRadius: '50%',
-            border: '1px solid rgba(255,255,255,0.14)',
-            background: 'rgba(255,255,255,0.06)',
+            borderWidth: 1,
+            borderStyle: 'solid',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -381,7 +382,7 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
             zIndex: 2,
           }}
         >
-          <X size={16} color="#f5f1ff" />
+          <X size={16} color="currentColor" />
         </button>
 
         {/* photos — left */}
@@ -395,12 +396,14 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
           }}
         >
           <div
+            className="border-neutral-200 text-neutral-400 dark:border-white/16 dark:text-[rgba(255,241,224,0.4)]"
             style={{
               width: '100%',
               aspectRatio: '4 / 3',
               borderRadius: 18,
-              background: `linear-gradient(150deg, ${hexToRgba(ORANGE, 0.16)}, rgba(20,16,24,0.6))`,
-              border: '1px dashed rgba(255,255,255,0.16)',
+              background: `linear-gradient(150deg, ${hexToRgba(ORANGE, 0.12)}, rgba(0,0,0,0.03))`,
+              borderWidth: 1,
+              borderStyle: 'dashed',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -408,11 +411,11 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
               gap: 8,
             }}
           >
-            <ImageIcon size={34} strokeWidth={1.5} color="rgba(255,241,224,0.4)" />
+            <ImageIcon size={34} strokeWidth={1.5} color="currentColor" />
             <span
+              className="text-neutral-400 dark:text-[rgba(255,241,224,0.35)]"
               style={{
                 fontSize: 11,
-                color: 'rgba(255,241,224,0.35)',
                 fontFamily: "'JetBrains Mono', monospace",
                 letterSpacing: '0.04em',
               }}
@@ -424,18 +427,20 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
             {photoSlots.slice(0, 3).map((_, i) => (
               <div
                 key={i}
+                className="border-neutral-200 text-neutral-300 dark:border-white/12 dark:text-[rgba(255,241,224,0.28)]"
                 style={{
                   flex: 1,
                   aspectRatio: '1 / 1',
                   borderRadius: 12,
-                  background: `linear-gradient(150deg, ${hexToRgba(ORANGE, 0.1)}, rgba(20,16,24,0.6))`,
-                  border: '1px dashed rgba(255,255,255,0.12)',
+                  background: `linear-gradient(150deg, ${hexToRgba(ORANGE, 0.08)}, rgba(0,0,0,0.03))`,
+                  borderWidth: 1,
+                  borderStyle: 'dashed',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
               >
-                <ImageIcon size={16} strokeWidth={1.5} color="rgba(255,241,224,0.28)" />
+                <ImageIcon size={16} strokeWidth={1.5} color="currentColor" />
               </div>
             ))}
           </div>
@@ -458,16 +463,19 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
             >
               <Icon size={18} strokeWidth={1.75} color="#1a1006" />
             </div>
-            <h3 style={{ fontSize: 20, fontWeight: 700, color: '#f5f1ff', margin: 0 }}>
+            <h3
+              className="text-neutral-900 dark:text-[#f5f1ff]"
+              style={{ fontSize: 20, fontWeight: 700, margin: 0 }}
+            >
               {project.name}
             </h3>
           </div>
 
           <p
+            className="text-neutral-600 dark:text-[rgba(245,241,255,0.75)]"
             style={{
               fontSize: 14,
               lineHeight: 1.7,
-              color: 'rgba(245,241,255,0.75)',
               margin: '0 0 22px',
             }}
           >
@@ -475,11 +483,11 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
           </p>
 
           <span
+            className="text-neutral-400 dark:text-[rgba(255,241,224,0.4)]"
             style={{
               fontSize: 11,
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
-              color: 'rgba(255,241,224,0.4)',
               fontFamily: "'JetBrains Mono', monospace",
               marginBottom: 10,
             }}
@@ -490,13 +498,12 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
             {project.stack.map((tech) => (
               <span
                 key={tech}
+                className="bg-neutral-900/5 text-neutral-700 dark:bg-white/6 dark:text-[rgba(255,241,224,0.85)]"
                 style={{
                   fontSize: 12,
                   padding: '6px 12px',
                   borderRadius: 999,
-                  background: 'rgba(255,255,255,0.06)',
                   border: `1px solid ${hexToRgba(ORANGE, 0.3)}`,
-                  color: 'rgba(255,241,224,0.85)',
                   fontFamily: "'JetBrains Mono', monospace",
                 }}
               >
@@ -550,6 +557,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
+      className="bg-white py-24 dark:bg-neutral-950"
       style={{
         position: 'relative',
         minHeight: 760,
@@ -558,7 +566,6 @@ export default function Projects() {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '48px 16px',
-        background: '#0a0a12',
         overflow: 'hidden',
         fontFamily: "'Plus Jakarta Sans', sans-serif",
       }}
@@ -597,19 +604,18 @@ export default function Projects() {
         }}
       />
 
-      <p
-        style={{
-          position: 'relative',
-          fontSize: 12,
-          letterSpacing: '0.14em',
-          color: 'rgba(230,226,255,0.4)',
-          fontFamily: "'JetBrains Mono', monospace",
-          textTransform: 'uppercase',
-          marginBottom: 32,
-        }}
-      >
-        projetos
-      </p>
+      <div className="relative mb-12 text-center">
+        <span className="inline-block rounded-xl border border-neutral-200 bg-neutral-900/5 px-4 py-1.5 text-sm text-neutral-600 dark:border-white/10 dark:bg-white/5 dark:text-white/70">
+          Projetos
+        </span>
+        <h2 className="mt-6 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl dark:text-white">
+          Alguns trabalhos recentes
+        </h2>
+        <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-white/60">
+          Uma seleção de projetos que desenvolvi aplicando boas práticas de código, design e
+          usabilidade.
+        </p>
+      </div>
 
       {/* stage */}
       <div style={{ position: 'relative', width: '100%', maxWidth: 1080, height: 440 }}>
@@ -658,9 +664,15 @@ export default function Projects() {
                 onToggle={isActive ? setOpenFolder : undefined}
               />
 
-              <div style={{ marginTop: 22, display: 'flex', alignItems: 'center', gap: 8 }}>
-                <Icon size={14} strokeWidth={1.75} color="rgba(253,186,116,0.85)" />
-                <span style={{ fontSize: 14, fontWeight: 600, color: '#f5f1ff', whiteSpace: 'nowrap' }}>
+              <div
+                className="text-orange-600 dark:text-[rgba(253,186,116,0.85)]"
+                style={{ marginTop: 22, display: 'flex', alignItems: 'center', gap: 8 }}
+              >
+                <Icon size={14} strokeWidth={1.75} color="currentColor" />
+                <span
+                  className="text-neutral-900 dark:text-[#f5f1ff]"
+                  style={{ fontSize: 14, fontWeight: 600, whiteSpace: 'nowrap' }}
+                >
                   {proj.name}
                 </span>
               </div>
@@ -671,6 +683,7 @@ export default function Projects() {
         {/* arrows */}
         <button
           onClick={() => goTo(active - 1)}
+          className="border-neutral-200 bg-neutral-900/5 text-neutral-700 dark:border-white/12 dark:bg-white/5 dark:text-[#f1efff]"
           style={{
             position: 'absolute',
             left: 0,
@@ -679,8 +692,8 @@ export default function Projects() {
             width: 44,
             height: 44,
             borderRadius: '50%',
-            border: '1px solid rgba(255,255,255,0.12)',
-            background: 'rgba(255,255,255,0.05)',
+            borderWidth: 1,
+            borderStyle: 'solid',
             backdropFilter: 'blur(8px)',
             display: 'flex',
             alignItems: 'center',
@@ -690,10 +703,11 @@ export default function Projects() {
           }}
           aria-label="Projeto anterior"
         >
-          <ChevronLeft size={20} color="#f1efff" />
+          <ChevronLeft size={20} color="currentColor" />
         </button>
         <button
           onClick={() => goTo(active + 1)}
+          className="border-neutral-200 bg-neutral-900/5 text-neutral-700 dark:border-white/12 dark:bg-white/5 dark:text-[#f1efff]"
           style={{
             position: 'absolute',
             right: 0,
@@ -702,8 +716,8 @@ export default function Projects() {
             width: 44,
             height: 44,
             borderRadius: '50%',
-            border: '1px solid rgba(255,255,255,0.12)',
-            background: 'rgba(255,255,255,0.05)',
+            borderWidth: 1,
+            borderStyle: 'solid',
             backdropFilter: 'blur(8px)',
             display: 'flex',
             alignItems: 'center',
@@ -713,7 +727,7 @@ export default function Projects() {
           }}
           aria-label="Próximo projeto"
         >
-          <ChevronRight size={20} color="#f1efff" />
+          <ChevronRight size={20} color="currentColor" />
         </button>
       </div>
 
@@ -724,15 +738,14 @@ export default function Projects() {
             key={proj.name}
             onClick={() => goTo(i)}
             aria-label={`Ir para ${proj.name}`}
+            className={i === active ? '' : 'bg-neutral-900/15 dark:bg-white/18'}
             style={{
               width: i === active ? 22 : 7,
               height: 7,
               borderRadius: 999,
               border: 'none',
               background:
-                i === active
-                  ? `linear-gradient(135deg, ${ORANGE}, ${ORANGE_ACCENT})`
-                  : 'rgba(255,255,255,0.18)',
+                i === active ? `linear-gradient(135deg, ${ORANGE}, ${ORANGE_ACCENT})` : undefined,
               cursor: 'pointer',
               transition: 'all 300ms ease',
               padding: 0,
@@ -753,10 +766,10 @@ export default function Projects() {
         }}
       >
         <p
+          className="text-neutral-600 dark:text-[rgba(245,241,255,0.7)]"
           style={{
             fontSize: 14,
             lineHeight: 1.65,
-            color: 'rgba(245,241,255,0.7)',
             margin: '0 0 16px',
           }}
         >
@@ -775,13 +788,12 @@ export default function Projects() {
           {current.stack.map((tech) => (
             <span
               key={tech}
+              className="bg-neutral-900/5 text-neutral-700 dark:bg-white/5 dark:text-[rgba(255,241,224,0.8)]"
               style={{
                 fontSize: 11,
                 padding: '5px 11px',
                 borderRadius: 999,
-                background: 'rgba(255,255,255,0.05)',
                 border: `1px solid ${hexToRgba(ORANGE, 0.28)}`,
-                color: 'rgba(255,241,224,0.8)',
                 fontFamily: "'JetBrains Mono', monospace",
               }}
             >
