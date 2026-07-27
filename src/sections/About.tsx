@@ -1,4 +1,5 @@
 import heroPhoto from '@/assets/images/vanderlei-hero.webp'
+import { fadeUp } from '@/lib/motion'
 import { motion } from 'framer-motion'
 import { Code2, Palette, Rocket } from 'lucide-react'
 
@@ -19,15 +20,6 @@ const highlights = [
     description: 'Aplicações rápidas, otimizadas do carregamento à interação.',
   },
 ]
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: 'easeOut' as const },
-  }),
-}
 
 function About() {
   return (
@@ -53,6 +45,10 @@ function About() {
             <img
               src={heroPhoto}
               alt="Vanderlei Fernandes"
+              width={320}
+              height={320}
+              loading="lazy"
+              decoding="async"
               className="h-72 w-72 rounded-3xl border-white/50 object-cover shadow-2xl shadow-black/40 sm:h-80 sm:w-80"
             />
           </div>

@@ -2,6 +2,8 @@ import heroPhoto from '@/assets/images/vanderlei-hero.webp'
 import GithubIcon from '@/components/icons/GithubIcon'
 import LinkedinIcon from '@/components/icons/LinkedinIcon'
 import LogoLoop, { type LogoItem } from '@/components/ui/LogoLoop'
+import { fadeUp } from '@/lib/motion'
+import { handleScrollTo } from '@/lib/scroll'
 import { motion } from 'framer-motion'
 import { ArrowRight, Mail } from 'lucide-react'
 import { SiFramer, SiReact, SiTailwindcss, SiTypescript } from 'react-icons/si'
@@ -22,22 +24,6 @@ const techLogos: LogoItem[] = [
   { node: <SiTailwindcss />, title: 'Tailwind CSS', href: 'https://tailwindcss.com' },
   { node: <SiFramer />, title: 'Framer Motion', href: 'https://www.framer.com/motion' },
 ]
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: 'easeOut' as const },
-  }),
-}
-
-function handleScrollTo(id: string) {
-  return (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault()
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
-}
 
 function Hero() {
   return (
@@ -95,7 +81,7 @@ function Hero() {
             <a
               href="#projects"
               onClick={handleScrollTo('projects')}
-              className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold tracking-wide text-white text-white/70 uppercase transition-colors hover:bg-blue-700 hover:bg-white/10 hover:text-white"
+              className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold tracking-wide text-white/70 uppercase transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
             >
               Ver projetos
               <ArrowRight size={16} />
@@ -103,7 +89,7 @@ function Hero() {
             <a
               href="#contact"
               onClick={handleScrollTo('contact')}
-              className="inline-flex items-center gap-2 rounded-xl border-2 border-blue-80 bg-white px-6 py-3 text-sm font-bold tracking-wide text-blue-800 uppercase transition-colors hover:bg-blue-50"
+              className="inline-flex items-center gap-2 rounded-xl border-2 border-blue-800 bg-white px-6 py-3 text-sm font-bold tracking-wide text-blue-800 uppercase transition-colors hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
             >
               Entrar em contato
               <Mail size={16} />
@@ -124,9 +110,9 @@ function Hero() {
                   key={social.label}
                   href={social.href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noreferrer noopener"
                   aria-label={social.label}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-neutral-900 shadow-sm transition-transform hover:scale-105"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-neutral-900 shadow-sm transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
                 >
                   <Icon size={18} />
                 </a>
@@ -165,6 +151,10 @@ function Hero() {
             <img
               src={heroPhoto}
               alt="Vanderlei Fernandes"
+              width={416}
+              height={416}
+              fetchPriority="high"
+              decoding="async"
               className="h-72 w-72 rounded-2xl border-white/50 object-cover shadow-2xl shadow-black/40 sm:h-96 sm:w-96 md:h-104 md:w-104"
             />
           </div>

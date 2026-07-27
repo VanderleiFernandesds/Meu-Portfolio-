@@ -2,6 +2,7 @@ import { useState, type ComponentType } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Briefcase, Download, Mail, Menu, Moon, Sun, User, X, Zap } from 'lucide-react'
 import { navLinks } from '@/lib/navigation'
+import { handleScrollTo } from '@/lib/scroll'
 import { useActiveSection } from '@/hooks/useActiveSection'
 
 const iconByLinkId: Record<string, ComponentType<{ size?: number }>> = {
@@ -19,8 +20,7 @@ function Header() {
 
   function handleNavClick(id: string) {
     return (event: React.MouseEvent<HTMLAnchorElement>) => {
-      event.preventDefault()
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      handleScrollTo(id)(event)
       setIsMenuOpen(false)
     }
   }
@@ -39,12 +39,12 @@ function Header() {
         <a
           href="#home"
           onClick={handleNavClick('home')}
-          className="shrink-0 text-lg font-bold tracking-tight text-white"
+          className="shrink-0 rounded-md text-lg font-bold tracking-tight text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
         >
           VF.
         </a>
 
-        <nav className="hidden md:block">
+        <nav aria-label="Navegação principal" className="hidden md:block">
           <ul className="flex items-center gap-7">
             {menuLinks.map((link) => {
               const Icon = iconByLinkId[link.id]
@@ -54,13 +54,13 @@ function Header() {
                     href={`#${link.id}`}
                     onClick={handleNavClick(link.id)}
                     aria-current={activeId === link.id ? 'true' : undefined}
-                    className={`flex items-center gap-1.5 text-sm transition-colors ${
+                    className={`flex items-center gap-1.5 rounded-md text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 ${
                       activeId === link.id
                         ? 'font-medium text-white'
                         : 'text-white/60 hover:text-white'
                     }`}
                   >
-                    {Icon && <Icon size={15} />}
+                    {Icon && <Icon size={15} aria-hidden="true" />}
                     {link.label}
                   </a>
                 </li>
@@ -73,35 +73,39 @@ function Header() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
             aria-label={isDark ? 'Ativar tema claro' : 'Ativar tema escuro'}
+            aria-pressed={isDark}
           >
-            {isDark ? <Moon size={16} /> : <Sun size={16} />}
+            {isDark ? <Moon size={16} aria-hidden="true" /> : <Sun size={16} aria-hidden="true" />}
           </button>
           <a
             href="/curriculo-vanderlei-fernandes.pdf"
             download
-            className="inline-flex items-center gap-2 rounded-e-2xl bg-white px-5 py-2 text-xs font-semibold tracking-wide text-neutral-900 uppercase transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-e-2xl bg-white px-5 py-2 text-xs font-semibold tracking-wide text-neutral-900 uppercase transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
           >
             Currículo
-            <Download size={14} />
+            <Download size={14} aria-hidden="true" />
           </a>
         </div>
 
         <button
           type="button"
           onClick={() => setIsMenuOpen((open) => !open)}
-          className="text-white md:hidden"
+          className="rounded-md text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 md:hidden"
           aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
-          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          {isMenuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
       </div>
 
       <AnimatePresence>
         {isMenuOpen && (
           <motion.nav
+            id="mobile-menu"
+            aria-label="Navegação móvel"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -117,13 +121,13 @@ function Header() {
                       href={`#${link.id}`}
                       onClick={handleNavClick(link.id)}
                       aria-current={activeId === link.id ? 'true' : undefined}
-                      className={`flex items-center gap-2 py-2 text-sm transition-colors ${
+                      className={`flex items-center gap-2 rounded-md py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 ${
                         activeId === link.id
                           ? 'font-medium text-white'
                           : 'text-white/60 hover:text-white'
                       }`}
                     >
-                      {Icon && <Icon size={16} />}
+                      {Icon && <Icon size={16} aria-hidden="true" />}
                       {link.label}
                     </a>
                   </li>
@@ -133,18 +137,19 @@ function Header() {
                 <button
                   type="button"
                   onClick={toggleTheme}
-                  className="flex h-9 w-9 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
                   aria-label={isDark ? 'Ativar tema claro' : 'Ativar tema escuro'}
+                  aria-pressed={isDark}
                 >
-                  {isDark ? <Moon size={16} /> : <Sun size={16} />}
+                  {isDark ? <Moon size={16} aria-hidden="true" /> : <Sun size={16} aria-hidden="true" />}
                 </button>
                 <a
                   href="/curriculo-vanderlei-fernandes.pdf"
                   download
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-xs font-semibold tracking-wide text-neutral-900 uppercase transition-opacity hover:opacity-90"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-xs font-semibold tracking-wide text-neutral-900 uppercase transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
                 >
                   Currículo
-                  <Download size={14} />
+                  <Download size={14} aria-hidden="true" />
                 </a>
               </li>
             </ul>

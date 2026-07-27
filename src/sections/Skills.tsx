@@ -1,3 +1,4 @@
+import { fadeUp } from '@/lib/motion'
 import { motion } from 'framer-motion'
 import { Database, Server, Wrench, Code } from 'lucide-react'
 import {
@@ -71,15 +72,6 @@ const skillCategories: SkillCategory[] = [
   },
 ]
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: 'easeOut' as const },
-  }),
-}
-
 function Skills() {
   return (
     <section id="skills" className="relative overflow-hidden bg-neutral-950 py-24">
@@ -123,7 +115,10 @@ function Skills() {
                 className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/20 backdrop-blur-sm"
               >
                 <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-700/15 text-teal-500">
+                  <span
+                    aria-hidden="true"
+                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-700/15 text-teal-500"
+                  >
                     <CategoryIcon size={20} />
                   </span>
                   <h3 className="text-xl font-semibold text-white">{category.title}</h3>
@@ -137,7 +132,7 @@ function Skills() {
                         key={skill.name}
                         className="flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-4 text-center transition-colors hover:border-teal-700/40 hover:bg-white/10"
                       >
-                        <Icon size={24} />
+                        <Icon size={24} aria-hidden="true" />
                         <span className="text-xs font-medium text-white/70">
                           {skill.name}
                         </span>

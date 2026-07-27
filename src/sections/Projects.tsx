@@ -1,3 +1,4 @@
+import { fadeUp } from '@/lib/motion'
 import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import { SiGithub } from 'react-icons/si'
@@ -43,15 +44,6 @@ const projects: Project[] = [
     demoUrl: '#',
   },
 ]
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: 'easeOut' as const },
-  }),
-}
 
 function Projects() {
   return (
@@ -121,19 +113,21 @@ function Projects() {
                   <a
                     href={project.githubUrl}
                     target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
+                    rel="noreferrer noopener"
+                    aria-label={`Ver código-fonte do projeto ${project.title} no GitHub`}
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
                   >
-                    <SiGithub size={16} />
+                    <SiGithub size={16} aria-hidden="true" />
                     GitHub
                   </a>
                   <a
                     href={project.demoUrl}
                     target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-neutral-900 transition-opacity hover:opacity-90"
+                    rel="noreferrer noopener"
+                    aria-label={`Ver demonstração do projeto ${project.title}`}
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-neutral-900 transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
                   >
-                    <ExternalLink size={16} />
+                    <ExternalLink size={16} aria-hidden="true" />
                     Demo
                   </a>
                 </div>
