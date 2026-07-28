@@ -618,7 +618,15 @@ export default function Projects() {
       </div>
 
       {/* stage */}
-      <div style={{ position: 'relative', width: '100%', maxWidth: 1080, height: 440 }}>
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          maxWidth: 1080,
+          height: 440,
+          perspective: 1400,
+        }}
+      >
         {PROJECTS.map((proj, i) => {
           const n = PROJECTS.length
           let diff = i - active
@@ -627,11 +635,13 @@ export default function Projects() {
           const abs = Math.abs(diff)
           const isActive = diff === 0
 
-          const scale = isActive ? 1 : abs === 1 ? 0.72 : 0.52
-          const translateX = diff * 270
-          const opacity = isActive ? 1 : abs === 1 ? 0.65 : abs === 2 ? 0.3 : 0
+          const scale = isActive ? 1 : abs === 1 ? 0.82 : 0.52
+          const translateX = diff * 290
+          const translateZ = -abs * 90
+          const rotateY = diff * -32
+          const opacity = isActive ? 1 : abs === 1 ? 0.75 : 0
           const zIndex = 20 - abs
-          const pointerEvents = abs > 2 ? 'none' : 'auto'
+          const pointerEvents = abs > 1 ? 'none' : 'auto'
 
           const Icon = proj.icon
 
@@ -643,7 +653,8 @@ export default function Projects() {
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
-                transform: `translate(-50%, -50%) translateX(${translateX}px) scale(${scale})`,
+                transform: `translate(-50%, -50%) translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+                transformStyle: 'preserve-3d',
                 opacity,
                 zIndex,
                 pointerEvents,
@@ -657,7 +668,7 @@ export default function Projects() {
               <Folder
                 color={ORANGE}
                 accent={ORANGE_ACCENT}
-                size={2.3}
+                size={2.9}
                 items={proj.items}
                 interactive={isActive}
                 open={isActive ? openFolder : false}
