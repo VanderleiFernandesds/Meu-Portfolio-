@@ -55,16 +55,7 @@ function About() {
         </motion.div>
 
         <div className="text-center md:order-2 md:text-left">
-          <motion.span
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.4 }}
-            variants={fadeUp}
-            className="inline-block rounded-xl border border-neutral-200 bg-neutral-900/5 px-4 py-1.5 text-sm text-neutral-600 dark:border-white/10 dark:bg-white/5 dark:text-white/70"
-          >
-            Sobre mim
-          </motion.span>
+        
 
           <motion.h2
             custom={0.1}

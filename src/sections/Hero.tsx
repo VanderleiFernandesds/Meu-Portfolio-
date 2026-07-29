@@ -2,14 +2,19 @@ import heroPhoto from '@/assets/images/vanderlei-hero.webp'
 import GithubIcon from '@/components/icons/GithubIcon'
 import LinkedinIcon from '@/components/icons/LinkedinIcon'
 import LogoLoop, { type LogoItem } from '@/components/ui/LogoLoop'
+import SpecularButton from '@/components/ui/SpecularButton'
+import TextType from '@/components/ui/TextType'
 import { fadeUp } from '@/lib/motion'
-import { handleScrollTo } from '@/lib/scroll'
 import { motion } from 'framer-motion'
 import { ArrowRight, Mail } from 'lucide-react'
 import { SiFramer, SiReact, SiTailwindcss, SiTypescript } from 'react-icons/si'
 
 const socialLinks = [
-  { href: 'https://github.com/', label: 'GitHub', icon: GithubIcon },
+  {
+    href: 'github.com/VanderleiFernandesds',
+    label: 'GitHub',
+    icon: GithubIcon,
+  },
   {
     href: 'www.linkedin.com/in/vanderleifernandesds',
     label: 'LinkedIn',
@@ -49,14 +54,26 @@ function Hero() {
             Disponível para novos projetos
           </motion.span>
 
+          
+
           <motion.h1
             custom={0.1}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="mt-6 text-6xl font-semibold tracking-tight text-neutral-900 md:text-7xl lg:text-8xl dark:text-white"
+            className="mt-6 text-4xl font-semibold tracking-tight text-neutral-900 md:text-4xl lg:text-5xl dark:text-white"
           >
-            Olá, eu sou Vanderlei Fernandes
+            Olá, eu sou 
+          </motion.h1>
+
+          <motion.h1
+            custom={0.0}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="mt-6 text-4xl font-semibold tracking-tight whitespace-nowrap text-neutral-900 md:text-4xl lg:text-7xl dark:text-white"
+          >
+            Vanderlei Fernandes
           </motion.h1>
 
           <motion.p
@@ -66,9 +83,18 @@ function Hero() {
             variants={fadeUp}
             className="mt-5 text-lg leading-relaxed text-neutral-600 md:text-xl dark:text-white/60"
           >
-            Desenvolvedor Front-End especializado em criar interfaces modernas,
-            responsivas e performáticas com React, TypeScript e animações que dão vida à
-            experiência do usuário.
+            <TextType
+              text={[
+                'Desenvolvedor Front-End especializado em criar interfaces modernas, responsivas e performáticas com React, TypeScript e animações que dão vida à experiência do usuário.',
+              ]}
+              typingSpeed={30}
+              initialDelay={300}
+              loop={false}
+              showCursor
+              hideCursorWhileTyping={false}
+              cursorCharacter="|"
+              startOnVisible
+            />
           </motion.p>
 
           <motion.div
@@ -78,22 +104,33 @@ function Hero() {
             variants={fadeUp}
             className="mt-8 flex flex-col items-center gap-4 sm:flex-row md:justify-start"
           >
-            <a
-              href="#projects"
-              onClick={handleScrollTo('projects')}
-              className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold tracking-wide text-neutral-600 uppercase transition-colors hover:bg-neutral-900/5 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
+            <SpecularButton
+              size="md"
+              radius={12}
+              textColor="#525252"
+              lineColor="#0f766e"
+              baseColor="#a3a3a3"
+              tintOpacity={0.03}
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              className="gap-2 normal-case dark:[--sb-text-color:rgba(255,255,255,0.7)]"
             >
               Ver projetos
-              <ArrowRight size={16} />
-            </a>
-            <a
-              href="#contact"
-              onClick={handleScrollTo('contact')}
-              className="inline-flex items-center gap-2 rounded-xl border-2 border-blue-800 bg-white px-6 py-3 text-sm font-bold tracking-wide text-blue-800 uppercase transition-colors hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+              <ArrowRight size={16} className="inline" />
+            </SpecularButton>
+            <SpecularButton
+              size="md"
+              radius={12}
+              tint="#1e40af"
+              tintOpacity={0.06}
+              textColor="#1e40af"
+              lineColor="#1e40af"
+              baseColor="#1e40af"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="gap-2 border-2 border-blue-800 normal-case"
             >
               Entrar em contato
-              <Mail size={16} />
-            </a>
+              <Mail size={16} className="inline" />
+            </SpecularButton>
           </motion.div>
 
           <motion.div

@@ -611,9 +611,9 @@ export default function Projects() {
         <h2 className="mt-6 text-4xl font-semibold tracking-tight text-neutral-900 md:text-5xl dark:text-white">
           Alguns trabalhos recentes
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-white/60">
-          Uma seleção de projetos que desenvolvi aplicando boas práticas de código, design e
-          usabilidade.
+        <p className="mx-auto mt-5 mb-28 max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-white/60 ">
+          Uma seleção de projetos que desenvolvi aplicando boas práticas de código, design
+          e usabilidade.
         </p>
       </div>
 
@@ -623,7 +623,7 @@ export default function Projects() {
           position: 'relative',
           width: '100%',
           maxWidth: 1080,
-          height: 440,
+          height: 340,
           perspective: 1400,
         }}
       >
@@ -638,7 +638,7 @@ export default function Projects() {
           const scale = isActive ? 1 : abs === 1 ? 0.82 : 0.52
           const translateX = diff * 290
           const translateZ = -abs * 90
-          const rotateY = diff * -32
+          const rotateY = diff * -52
           const opacity = isActive ? 1 : abs === 1 ? 0.75 : 0
           const zIndex = 20 - abs
           const pointerEvents = abs > 1 ? 'none' : 'auto'
@@ -659,7 +659,8 @@ export default function Projects() {
                 zIndex,
                 pointerEvents,
                 cursor: isActive ? 'default' : 'pointer',
-                transition: 'transform 480ms cubic-bezier(0.22, 1, 0.36, 1), opacity 480ms ease',
+                transition:
+                  'transform 480ms cubic-bezier(0.22, 1, 0.36, 1), opacity 480ms ease',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -676,13 +677,13 @@ export default function Projects() {
               />
 
               <div
-                className="text-orange-600 dark:text-[rgba(253,186,116,0.85)]"
+                className="text-black dark:text-[rgba(253,186,116,0.85)]"
                 style={{ marginTop: 22, display: 'flex', alignItems: 'center', gap: 8 }}
               >
                 <Icon size={14} strokeWidth={1.75} color="currentColor" />
                 <span
                   className="text-neutral-900 dark:text-[#f5f1ff]"
-                  style={{ fontSize: 14, fontWeight: 600, whiteSpace: 'nowrap' }}
+                  style={{ fontSize: 14, fontWeight: 800, whiteSpace: 'nowrap' }}
                 >
                   {proj.name}
                 </span>
@@ -694,15 +695,15 @@ export default function Projects() {
         {/* arrows */}
         <button
           onClick={() => goTo(active - 1)}
-          className="border-neutral-200 bg-neutral-900/5 text-neutral-700 dark:border-white/12 dark:bg-white/5 dark:text-[#f1efff]"
+          className="border-neutral-200 bg-neutral-900/5 text-neutral-700 dark:border-white/12 dark:bg-cyan-500 dark:text-[#f1efff]"
           style={{
             position: 'absolute',
-            left: 0,
+            left: '9%',
             top: '44%',
             transform: 'translateY(-50%)',
-            width: 44,
-            height: 44,
-            borderRadius: '50%',
+            width: 52,
+            height: 102,
+            borderRadius: '10%',
             borderWidth: 1,
             borderStyle: 'solid',
             backdropFilter: 'blur(8px)',
@@ -714,19 +715,19 @@ export default function Projects() {
           }}
           aria-label="Projeto anterior"
         >
-          <ChevronLeft size={20} color="currentColor" />
+          <ChevronLeft size={24} color="currentColor" />
         </button>
         <button
           onClick={() => goTo(active + 1)}
-          className="border-neutral-200 bg-neutral-900/5 text-neutral-700 dark:border-white/12 dark:bg-white/5 dark:text-[#f1efff]"
+          className="border-neutral-200 bg-neutral-900/5 text-neutral-700 dark:border-white/12 dark:bg-cyan-500 dark:text-[#f1efff]"
           style={{
             position: 'absolute',
-            right: 0,
+            right: '9%',
             top: '44%',
             transform: 'translateY(-50%)',
-            width: 44,
-            height: 44,
-            borderRadius: '50%',
+            width: 52,
+            height: 102,
+            borderRadius: '10%',
             borderWidth: 1,
             borderStyle: 'solid',
             backdropFilter: 'blur(8px)',
@@ -738,12 +739,12 @@ export default function Projects() {
           }}
           aria-label="Próximo projeto"
         >
-          <ChevronRight size={20} color="currentColor" />
+          <ChevronRight size={24} color="currentColor" />
         </button>
       </div>
 
       {/* dots */}
-      <div style={{ display: 'flex', gap: 8, marginTop: 8, marginBottom: 36 }}>
+      <div style={{ display: 'flex', gap: 8, marginTop: 8, marginBottom: 10 }}>
         {PROJECTS.map((proj, i) => (
           <button
             key={proj.name}
@@ -756,7 +757,9 @@ export default function Projects() {
               borderRadius: 999,
               border: 'none',
               background:
-                i === active ? `linear-gradient(135deg, ${ORANGE}, ${ORANGE_ACCENT})` : undefined,
+                i === active
+                  ? `linear-gradient(135deg, ${ORANGE}, ${ORANGE_ACCENT})`
+                  : undefined,
               cursor: 'pointer',
               transition: 'all 300ms ease',
               padding: 0,
@@ -764,7 +767,24 @@ export default function Projects() {
           />
         ))}
       </div>
-
+      <button
+        onClick={() => setModalOpen(true)}
+        style={{
+          padding: '11px 26px',
+          marginBottom: '20px',
+          borderRadius: '10px',
+          border: 'none',
+          background: `linear-gradient(135deg, ${ORANGE}, ${ORANGE_ACCENT})`,
+          color: '#1a1006',
+          fontFamily: "'Plus Jakarta Sans', sans-serif",
+          fontSize: 13,
+          fontWeight: 700,
+          cursor: 'pointer',
+          boxShadow: `0 10px 24px ${hexToRgba(ORANGE, 0.3)}`,
+        }}
+      >
+        Ver detalhes
+      </button>
       {/* summary + stack + cta, below the featured folder */}
       <div
         key={active}
@@ -812,27 +832,11 @@ export default function Projects() {
             </span>
           ))}
         </div>
-
-        <button
-          onClick={() => setModalOpen(true)}
-          style={{
-            padding: '11px 26px',
-            borderRadius: 999,
-            border: 'none',
-            background: `linear-gradient(135deg, ${ORANGE}, ${ORANGE_ACCENT})`,
-            color: '#1a1006',
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            fontSize: 13,
-            fontWeight: 700,
-            cursor: 'pointer',
-            boxShadow: `0 10px 24px ${hexToRgba(ORANGE, 0.3)}`,
-          }}
-        >
-          Ver detalhes
-        </button>
       </div>
 
-      {modalOpen && <ProjectModal project={current} onClose={() => setModalOpen(false)} />}
+      {modalOpen && (
+        <ProjectModal project={current} onClose={() => setModalOpen(false)} />
+      )}
     </section>
   )
 }
